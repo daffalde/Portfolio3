@@ -23,7 +23,7 @@ h6 {
   font-size: 20px;
 }
 h5 {
-  font-size: 48px;
+  font-size: 24px;
 }
 h4 {
   font-size: 100px;
@@ -44,4 +44,73 @@ h1 {
   height: fit-content;
   min-height: 100vh;
   place-self: center;
+}
+
+@media screen and (width <= 1440px) {
+  .container {
+    padding: 0 10px;
+  }
+}
+
+/* loading */
+.loading-button {
+  width: 20px;
+  height: 20px;
+}
+.loading-button img {
+  width: 100%;
+  animation: loading 0.7s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* alert */
+.alert-failed {
+  position: fixed;
+  width: 280px;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  z-index: 10;
+  gap: 20px;
+  background: #b10303;
+  background: linear-gradient(
+    90deg,
+    rgba(177, 3, 3, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  border-radius: 5px;
+  color: var(--white);
+  padding: 0 20px;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: alert 7s ease;
+}
+
+@keyframes alert {
+  0% {
+    transform: translate(-50%, 0); /* Tetap di luar viewport */
+    opacity: 0;
+  }
+  10% {
+    transform: translate(-50%, 120px); /* Masuk ke layar */
+    opacity: 1;
+  }
+  90% {
+    transform: translate(-50%, 120px); /* Tetap di tempat */
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0); /* Keluar layar lagi */
+    opacity: 0;
+  }
 }
