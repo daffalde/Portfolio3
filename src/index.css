@@ -95,6 +95,29 @@ h1 {
   transform: translateX(-50%);
   animation: alert 7s ease;
 }
+.alert-success {
+  position: fixed;
+  width: 280px;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  z-index: 10;
+  gap: 20px;
+  background: #076d0c;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 109, 12, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  border-radius: 5px;
+  color: var(--white);
+  padding: 0 20px;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: alert 7s ease;
+}
 
 @keyframes alert {
   0% {

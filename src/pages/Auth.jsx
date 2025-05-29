@@ -3,7 +3,8 @@ import "../style/auth.css";
 import { useEffect, useRef, useState } from "react";
 import { LoadingButton } from "../components/Loading";
 import axios from "axios";
-import { AlertFailed, AlertSuccess } from "../components/Alert";
+import { AlertFailed } from "../components/Alert";
+import Cookies from "js-cookie";
 
 export default function Auth() {
   const nav = useNavigate();
@@ -29,8 +30,8 @@ export default function Auth() {
           },
         }
       );
-      setLoadingButton(false);
-      console.log(data);
+      Cookies.set("token", data.access_token);
+      nav("/dashboard");
     } catch (e) {
       console.log(e);
       setLoadingButton(false);
@@ -70,7 +71,7 @@ export default function Auth() {
                 <div className="auth-form-gap"></div>
                 <input
                   ref={inputEmail}
-                  type="text"
+                  type="email"
                   placeholder="email@example.com"
                 />
               </span>
