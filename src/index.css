@@ -52,6 +52,52 @@ h1 {
   }
 }
 
+/* button */
+.button-main {
+  width: fit-content;
+  height: 40px;
+  font-size: 16px;
+  background-color: var(--black);
+  border-radius: 5px;
+  color: var(--white);
+  font-weight: 500;
+  padding: 0 20px;
+  cursor: pointer;
+  border: transparent;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.button-main:hover {
+  background-color: #414141;
+  transition: 0.2s;
+}
+.button-main:active {
+  background-color: #757575;
+}
+
+.button-second {
+  width: fit-content;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 5px;
+  color: var(--black);
+  border: 2px solid var(--white2);
+  padding: 0 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.button-second:hover {
+  border: 2px solid var(--black3);
+  transition: 0.2s;
+}
+.button-second:active {
+  background-color: #dfdfdf;
+}
+
 /* loading */
 .loading-button {
   width: 20px;
@@ -135,5 +181,46 @@ h1 {
   100% {
     transform: translate(-50%, 0); /* Keluar layar lagi */
     opacity: 0;
+  }
+}
+
+/* popup */
+.popup-wrap {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 1, 0.5);
+  z-index: 1;
+  animation: popup-wrap 0.4s ease-in-out;
+}
+@keyframes popup-wrap {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+.popup-content {
+  padding: 10px;
+  background-color: var(--white);
+  border-radius: 10px;
+  width: fit-content;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: popup-content 0.5s ease-in-out;
+}
+@keyframes popup-content {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 200px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translate(-50%, -50%);
   }
 }

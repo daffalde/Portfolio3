@@ -64,3 +64,135 @@
   background-color: var(--black3);
   pointer-events: none;
 }
+
+/* dashhead */
+.dashhead {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashhead h5 {
+  font-size: 32px;
+}
+.dashed-user {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 50px;
+  text-align: end;
+  gap: 10px;
+  width: fit-content;
+  cursor: default;
+}
+.dashed-user img {
+  height: 100%;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.dashhead form {
+  height: 50px;
+  width: 500px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: var(--white2);
+  border-radius: 5px;
+  padding: 0 10px;
+  gap: 10px;
+}
+.dashhead form input {
+  font-size: 16px;
+  background-color: transparent;
+  width: 100%;
+  border: transparent;
+}
+.dashhead form input:focus {
+  outline: transparent;
+}
+
+/* portfolio add */
+.d-portfolio-input {
+  width: 600px;
+}
+.d-p-i-ss input {
+  display: none;
+}
+.d-p-i-ss label {
+  display: block;
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.d-p-i-logo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  padding: 20px;
+  align-items: center;
+}
+.d-p-i-logo p {
+  font-weight: 600;
+  color: var(--black-50);
+}
+.d-p-i-logo label {
+  display: block;
+  border: 1px solid var(--black3);
+  height: 60px;
+  width: 100px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+.d-p-i-logo label::after {
+  content: "Pilih gambar";
+  position: absolute;
+  right: -110px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: underline;
+}
+#d-p-i-logo-input {
+  display: none;
+}
+.d-p-i-info {
+  width: 100%;
+}
+.d-p-i-info span {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  padding: 0 20px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.d-p-i-info span label {
+  font-weight: 600;
+  color: var(--black-50);
+}
+.d-p-i-info span input {
+  font-size: 16px;
+  padding: 0 5px;
+  height: 40px;
+  border: transparent;
+  border-bottom: 2px solid var(--black3);
+}
+.d-p-i-info span input:focus {
+  outline: transparent;
+}
+
+.d-p-i-action {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: end;
+  align-items: center;
+}
