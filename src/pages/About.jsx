@@ -1,9 +1,11 @@
+import { Back } from "../components/Back";
 import "../style/about.css";
 
 export default function About() {
   return (
     <>
       <div className="about-container">
+        <Back />
         <div className="about">
           <div className="about-head">
             <img src="/logo-white-full.svg" alt="logo" />

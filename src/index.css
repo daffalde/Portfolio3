@@ -305,3 +305,70 @@ h1 {
     transform: translate(-50%, -50%);
   }
 }
+
+/* back */
+.back {
+  position: absolute;
+  display: flex;
+  left: -150px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  cursor: default;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  animation: back 0.5s ease-in-out forwards;
+}
+@keyframes back {
+  0% {
+    opacity: 0;
+    left: -150px;
+  }
+  100% {
+    opacity: 1;
+    left: -100px;
+  }
+}
+.back-hover {
+  left: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.back-in {
+  width: 100px;
+  height: 100px;
+  background-color: var(--black);
+  border: 1px solid var(--white);
+  padding: 15px;
+}
+.back-in:last-child {
+  width: 50px;
+  background-color: var(--white);
+  border-radius: 0 5px 5px 0;
+  border: 1px solid white;
+  display: flex;
+  justify-content: end;
+  padding: 0;
+  align-items: center;
+  transition: 0.2s ease-out;
+}
+.back-in:last-child:hover {
+  width: 110px;
+  transition: 0.2s ease-out;
+}
+.back-in:last-child h6 {
+  transform: rotate(90deg);
+}
+.back-move {
+  width: 100%;
+  height: 100dvh;
+  position: fixed;
+  background-color: var(--black);
+  z-index: 51;
+  transition: 1s ease-out;
+  left: -100vw;
+}
+.back-move-on {
+  left: 0;
+  transition: 0.5s ease-out;
+}

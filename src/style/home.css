@@ -117,6 +117,7 @@
   justify-content: center;
   align-items: center;
   transition: 1s ease-out;
+  overflow: hidden;
 }
 .home-aos {
   background-size: 100%;
@@ -164,6 +165,7 @@
 }
 .home-head img {
   padding: 20px 0;
+  cursor: pointer;
 }
 .home-head button {
   border-radius: 0 0 5px 5px;

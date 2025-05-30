@@ -3,10 +3,10 @@ import "../style/home.css";
 import { useEffect, useState } from "react";
 import { LoadingEnter } from "../components/Loading";
 import axios from "axios";
-import Aos from "aos";
 
 export default function Home() {
-  Aos.init();
+  const getUrl = window.location.search;
+  console.log(getUrl.split("=")[1]);
   const nav = useNavigate();
   const [move, setMove] = useState(false);
   const [destination, setDestination] = useState(null);
@@ -45,6 +45,7 @@ export default function Home() {
 
   useEffect(() => {
     getData();
+
     if (dataIndicator) {
       const timeout = setTimeout(() => {
         setLoadingEnter(false);
@@ -67,6 +68,9 @@ export default function Home() {
   const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
+    if (getUrl.split("=")[1] === "300") {
+      window.scrollTo(0, 300);
+    }
     function handleScroll() {
       setScroll(window.scrollY);
     }
@@ -104,7 +108,11 @@ export default function Home() {
 
             {/* static element */}
             <div className={`home-head ${loadingEnter ? "" : "home-head-aos"}`}>
-              <img src="/logo-black-full.svg" alt="logo" />
+              <img
+                onClick={() => nav("/")}
+                src="/logo-black-full.svg"
+                alt="logo"
+              />
               <button className="button-main">Hire me</button>
             </div>
             <div className="home-footer">
@@ -153,6 +161,7 @@ export default function Home() {
             <div className="menu-c-left">
               <span className="menu-c-l-span">
                 <img
+                  onClick={() => nav("/")}
                   className={`menu-c-l-s-logo ${
                     scroll >= 200 ? "menu-c-l-s-logo-aos" : ""
                   }`}
