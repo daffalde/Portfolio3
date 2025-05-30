@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashboardPortfolio from "./pages/DashboardPortfolio";
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" Component={Home} />
+          <Route path="/about" Component={About} />
           <Route path="/dashboard/portfolio" Component={DashboardPortfolio} />
           <Route path="/login" Component={Auth} />
         </Routes>
