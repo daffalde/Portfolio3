@@ -32,7 +32,7 @@ export function Dashhead({ title }) {
       const timeout = setTimeout(() => {
         Cookies.remove("token");
         nav("/login");
-      }, 4000);
+      }, 2000);
       return () => clearTimeout(timeout);
     }
   }, [alertFailed]);

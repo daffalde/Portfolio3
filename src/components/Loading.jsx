@@ -10,3 +10,16 @@ export function LoadingButton({ color }) {
     </>
   );
 }
+
+export function LoadingPage({ color }) {
+  return (
+    <>
+      <div className="loading-page">
+        <img
+          src={`/loading-${color === "white" ? "white" : "black"}.png`}
+          alt="loading icon"
+        />
+      </div>
+    </>
+  );
+}

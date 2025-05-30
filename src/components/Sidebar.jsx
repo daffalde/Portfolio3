@@ -49,10 +49,11 @@ export function Sidebar() {
     const formLogo = new FormData();
     formLogo.append("file", logo);
 
+    const date = Date.now();
     try {
       const respFile = await axios.post(
         "https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/storage/gambar/" +
-          Date.now(),
+          date,
         formData,
         {
           headers: {
@@ -63,7 +64,7 @@ export function Sidebar() {
       );
       const respLogo = await axios.post(
         "https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/storage/logo/" +
-          Date.now(),
+          date,
         formLogo,
         {
           headers: {
@@ -72,16 +73,14 @@ export function Sidebar() {
           },
         }
       );
-      console.log(respFile.data.key);
-      console.log(respLogo.data.key);
 
       // input semua data
       await axios.post(
         "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/portfolio",
         {
           nama: inputNama.current.value,
-          logo: `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/public/${respLogo.data.key}`,
-          gambar: `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/public/${respFile.data.key}`,
+          logo: `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/public/storage/logo/${date}`,
+          gambar: `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/public/storage/gambar/${date}`,
           deskripsi: inputDesc.current.value,
           link: inputLink.current.value,
         },
@@ -107,6 +106,7 @@ export function Sidebar() {
       const timeout = setTimeout(() => {
         setAlertFailed(false);
         setAlertSuccess(false);
+        window.location.reload();
       }, 6000);
       return () => clearTimeout(timeout);
     }
@@ -183,7 +183,12 @@ export function Sidebar() {
                 >
                   Cancel
                 </button>
-                <button onClick={handleAdd} className="button-main">
+                <button
+                  onClick={handleAdd}
+                  className={`button-main ${
+                    loadingButton ? "button-main-inactive" : ""
+                  }`}
+                >
                   Add {loadingButton ? <LoadingButton color={"white"} /> : null}
                 </button>
               </div>
