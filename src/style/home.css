@@ -48,8 +48,6 @@
   cursor: pointer;
   transition: 0.3s;
 }
-.menu-c-l-i-hire-aos {
-}
 .menu-c-l-i-hire:hover {
   background-color: var(--black2);
   width: 200px;
