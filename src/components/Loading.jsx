@@ -23,3 +23,24 @@ export function LoadingPage({ color }) {
     </>
   );
 }
+
+export function LoadingEnter({ value }) {
+  return (
+    <>
+      <div className={`loading-enter ${value ? "" : "loading-exit"}`}>
+        <img
+          className="loading-enter-title"
+          src="/logo-white-full.svg"
+          alt="logo"
+        />
+        <span>
+          <img
+            className="loading-enter-load"
+            src={`/loading-white.png`}
+            alt="loading icon"
+          />
+        </span>
+      </div>
+    </>
+  );
+}

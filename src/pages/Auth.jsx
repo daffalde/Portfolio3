@@ -11,6 +11,7 @@ export default function Auth() {
   const [loadingButton, setLoadingButton] = useState(false);
   const inputEmail = useRef("");
   const inputPass = useRef("");
+  Cookies.remove("token");
 
   const [alertFailed, setAlertFailed] = useState(false);
 
