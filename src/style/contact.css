@@ -1,0 +1,226 @@
+.contact-container {
+  width: 100%;
+  height: 100dvh;
+  background-color: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+}
+.contact-wrap {
+  max-width: 1440px;
+  width: 100%;
+  height: 100dvh;
+  overflow: auto;
+  left: 100vw;
+  position: relative;
+  animation: contanet-wrap 1s ease-in-out forwards;
+}
+@keyframes contanet-wrap {
+  0% {
+    left: 100vw;
+  }
+  100% {
+    left: 0;
+  }
+}
+.contact {
+  max-width: 1440px;
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
+}
+.contact-head {
+  width: 100%;
+  text-align: end;
+  padding: 20px 0;
+}
+.contact-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.contact-menu {
+  color: var(--white);
+  height: calc(100dvh - 80px);
+}
+.contact-menu h1 {
+  color: var(--black2);
+  position: relative;
+  left: -300px;
+  opacity: 0;
+  animation: h1 1s ease-out 1s forwards;
+}
+@keyframes h1 {
+  0% {
+    left: -300px;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+.contact-menu:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.contact-m-paragraph {
+  width: 80%;
+  display: block;
+  padding: 50px 0;
+  border-bottom: 2px solid var(--white);
+  margin-bottom: 50px;
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  animation: paragraph 1s ease-in-out 1.7s forwards;
+}
+@keyframes paragraph {
+  0% {
+    top: 100px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+.contact-m-info {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 50px;
+  position: relative;
+  left: 100px;
+  opacity: 0;
+  animation: info 1s ease-in-out 2s forwards;
+}
+@keyframes info {
+  0% {
+    left: 100px;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+.contact-m-info h6 {
+  margin-bottom: 10px;
+}
+.contact-m-info span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+.contact-m-info span:last-child a {
+  color: var(--white);
+  text-decoration: none;
+}
+.contact-m-info span:last-child a:hover {
+  text-decoration: underline;
+}
+
+.contact-menu form {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin-left: 10px;
+  gap: 20px;
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  animation: form 1s ease-in-out 1.3s forwards;
+}
+@keyframes form {
+  0% {
+    top: 200px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+.contact-menu form input {
+  font-size: 16px;
+  border: transparent;
+  border-bottom: 1px solid var(--white);
+  width: 100%;
+  background-color: transparent;
+  padding: 0 5px;
+  height: 40px;
+  color: var(--white);
+}
+.contact-menu form input:focus {
+  outline: none;
+}
+.contact-menu form textarea {
+  font-size: 16px;
+  border: transparent;
+  border-bottom: 1px solid var(--white);
+  width: 100%;
+  background-color: transparent;
+  padding: 5px;
+  height: 100px;
+  color: var(--white);
+  resize: none;
+}
+.contact-menu form textarea:focus {
+  outline: none;
+}
+.contact-menu form button {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  background-color: transparent;
+  border: transparent;
+  color: var(--white);
+  font-size: 16px;
+  gap: 10px;
+  cursor: pointer;
+}
+.contact-menu form button:hover {
+  background-color: var(--black2);
+}
+.contact-menu form button:active {
+  background-color: var(--black);
+}
+
+@media screen and (width < 1500px) {
+  .contact {
+    padding: 0 20px 0 50px;
+  }
+}
+
+@media screen and (width < 800px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+  .contact-menu h1 {
+    font-size: 80px;
+    left: -100px;
+  }
+  .contact-menu {
+    height: fit-content;
+  }
+  .contact-menu form {
+    width: 85%;
+  }
+  .contact-m-info {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .contact-m-paragraph {
+    width: 90%;
+    text-align: justify;
+  }
+}
