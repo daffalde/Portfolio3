@@ -4,6 +4,7 @@ import DashboardPortfolio from "./pages/DashboardPortfolio";
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Skill from "./pages/Skill";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/about" Component={About} />
+          <Route path="/skill" Component={Skill} />
           <Route path="/dashboard/portfolio" Component={DashboardPortfolio} />
           <Route path="/login" Component={Auth} />
         </Routes>

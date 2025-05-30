@@ -11,7 +11,7 @@
 .about {
   max-width: 1440px;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   color: var(--white);
   display: flex;
   flex-direction: column;
