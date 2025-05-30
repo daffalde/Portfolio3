@@ -85,14 +85,14 @@ export default function Home() {
       <div className="home-wrap">
         <div
           className={`home ${scroll >= 200 ? "home-off" : ""} ${
-            loadingEnter ? "" : "home-aos"
+            loadingEnter || scroll >= 200 ? "" : "home-aos"
           }`}
         >
           <div className="home-content">
             {/* movable element */}
             <h1
               className={`home-c-title ${
-                loadingEnter ? "" : "home-c-title-aos"
+                loadingEnter || scroll >= 200 ? "" : "home-c-title-aos"
               }`}
             >
               FrontEnd <br />
@@ -100,14 +100,18 @@ export default function Home() {
             </h1>
             <img
               className={`home-c-picture ${
-                loadingEnter ? "" : "home-c-picture-aos"
+                loadingEnter || scroll >= 200 ? "" : "home-c-picture-aos"
               }`}
               src="/picture.png"
               alt="picture of creator"
             />
 
             {/* static element */}
-            <div className={`home-head ${loadingEnter ? "" : "home-head-aos"}`}>
+            <div
+              className={`home-head ${
+                loadingEnter || scroll >= 200 ? "" : "home-head-aos"
+              }`}
+            >
               <img
                 onClick={() => nav("/")}
                 src="/logo-black-full.svg"
@@ -118,7 +122,7 @@ export default function Home() {
             <div className="home-footer">
               <div
                 className={`home-f-social ${
-                  loadingEnter ? "" : "home-f-social-aos"
+                  loadingEnter || scroll >= 200 ? "" : "home-f-social-aos"
                 }`}
               >
                 <button
@@ -147,7 +151,7 @@ export default function Home() {
               </div>
               <div
                 className={`home-f-text ${
-                  loadingEnter ? "" : "home-f-text-aos"
+                  loadingEnter || scroll >= 200 ? "" : "home-f-text-aos"
                 }`}
               >
                 Life is not about waiting for the storm to pass,
