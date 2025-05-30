@@ -6,7 +6,6 @@ import axios from "axios";
 
 export default function Home() {
   const getUrl = window.location.search;
-  console.log(getUrl.split("=")[1]);
   const nav = useNavigate();
   const [move, setMove] = useState(false);
   const [destination, setDestination] = useState(null);
@@ -34,7 +33,6 @@ export default function Home() {
           },
         }
       );
-      console.log(respLink.data);
       setData(resp.data[0]);
       setLink(respLink.data[0]);
       setDataIndicator(true);
@@ -58,7 +56,6 @@ export default function Home() {
     if (move) {
       const timeout = setTimeout(() => {
         nav(destination);
-        console.log(destination);
       }, 1500);
       return () => clearTimeout(timeout);
     }
@@ -95,8 +92,7 @@ export default function Home() {
                 loadingEnter || scroll >= 200 ? "" : "home-c-title-aos"
               }`}
             >
-              FrontEnd <br />
-              Developer
+              {data ? data.spesialis : null}
             </h1>
             <img
               className={`home-c-picture ${

@@ -5,6 +5,7 @@ import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Skill from "./pages/Skill";
+import Portfolio from "./pages/Portfolio";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" Component={Home} />
           <Route path="/about" Component={About} />
           <Route path="/skill" Component={Skill} />
+          <Route path="/projects" Component={Portfolio} />
           <Route path="/dashboard/portfolio" Component={DashboardPortfolio} />
           <Route path="/login" Component={Auth} />
         </Routes>
