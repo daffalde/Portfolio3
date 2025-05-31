@@ -3,8 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import { LoadingButton } from "./Loading";
 import { AlertFailed, AlertSuccess } from "./Alert";
+import { useNavigate } from "react-router-dom";
 
 export function Sidebar() {
+  const nav = useNavigate();
   const getUrl = window.location.pathname;
   const [popup, setPopup] = useState(false);
   const token = Cookies.get("token");
@@ -203,6 +205,7 @@ export function Sidebar() {
           <img src="/ico.svg" alt="icon" />
           <span>
             <button
+              onClick={() => nav("/dashboard")}
               className={`dashboard-sidebar-button ${
                 getUrl.split("/")[2] === "" ? "dashboard-sidebar-button-on" : ""
               }`}
@@ -210,6 +213,7 @@ export function Sidebar() {
               <img src="/home.png" alt="out icon" />
             </button>
             <button
+              onClick={() => nav("/dashboard/message")}
               className={`dashboard-sidebar-button ${
                 getUrl.split("/")[2] === "message"
                   ? "dashboard-sidebar-button-on"
@@ -219,6 +223,7 @@ export function Sidebar() {
               <img src="/message.png" alt="out icon" />
             </button>
             <button
+              onClick={() => nav("/dashboard/portfolio")}
               className={`dashboard-sidebar-button ${
                 getUrl.split("/")[2] === "portfolio"
                   ? "dashboard-sidebar-button-on"

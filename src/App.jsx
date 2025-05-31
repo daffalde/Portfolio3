@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Skill from "./pages/Skill";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
+import DashboardMessage from "./pages/DashboardMessage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/projects" Component={Portfolio} />
           <Route path="/contact" Component={Contact} />
           <Route path="/dashboard/portfolio" Component={DashboardPortfolio} />
+          <Route path="/dashboard/message" Component={DashboardMessage} />
           <Route path="/login" Component={Auth} />
         </Routes>
       </BrowserRouter>
