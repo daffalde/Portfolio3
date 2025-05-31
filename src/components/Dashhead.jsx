@@ -7,6 +7,13 @@ import { AlertFailed } from "./Alert";
 
 export function Dashhead({ title }) {
   const nav = useNavigate();
+
+  useEffect(() => {
+    if (!Cookies.get("token")) {
+      nav("/login");
+    }
+  }, []);
+
   const [data, setData] = useState(false);
   const [alertFailed, setAlertFailed] = useState(false);
   async function getData() {

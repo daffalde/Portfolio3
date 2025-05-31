@@ -34,7 +34,6 @@ export default function DashboardPortfolio() {
           },
         }
       );
-      console.log(data);
       setData(data);
       setLoadingPage(false);
     } catch (e) {

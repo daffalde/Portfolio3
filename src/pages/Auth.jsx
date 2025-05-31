@@ -90,7 +90,6 @@ export default function Auth() {
                 {loadingButton ? <LoadingButton color={"black"} /> : null}
               </button>
             </form>
-            <Link>Forgot your password?</Link>
           </div>
         </div>
         <p style={{ position: "fixed", bottom: "0", padding: "10px 0" }}>

@@ -242,7 +242,13 @@ export function Sidebar() {
           </span>
         </div>
 
-        <button className="dashboard-sidebar-button">
+        <button
+          onClick={() => {
+            Cookies.remove("token");
+            window.location.reload();
+          }}
+          className="dashboard-sidebar-button"
+        >
           <img src="/out.png" alt="out icon" />
         </button>
       </div>
