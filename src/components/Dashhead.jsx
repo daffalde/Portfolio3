@@ -41,10 +41,6 @@ export function Dashhead({ title }) {
       {alertFailed ? <AlertFailed message={"Sesi login habis"} /> : null}
       <div className="dashhead">
         <h5>{title}</h5>
-        <form>
-          <img src="/search.png" alt="search icon" />
-          <input type="text" placeholder="Cari" />
-        </form>
         <div className="dashed-user">
           <span>
             <h6>{data ? data.nama : "Loading..."}</h6>

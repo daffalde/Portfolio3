@@ -24,7 +24,6 @@ export default function DashboardMessage() {
           },
         }
       );
-      console.log(resp.data);
       setData(resp.data);
       setLoadingPage(false);
     } catch (e) {

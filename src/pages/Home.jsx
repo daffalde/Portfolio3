@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../style/home.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LoadingEnter } from "../components/Loading";
 import axios from "axios";
 
@@ -9,6 +9,32 @@ export default function Home() {
   const nav = useNavigate();
   const [move, setMove] = useState(false);
   const [destination, setDestination] = useState(null);
+
+  async function handleVisitor() {
+    try {
+      await axios.post(
+        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/visitor",
+        {
+          platform: navigator.userAgent,
+        },
+        {
+          headers: {
+            apikey: import.meta.env.VITE_ANON,
+          },
+        }
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  const hasSentRequest = useRef(false);
+
+  useEffect(() => {
+    if (!hasSentRequest.current) {
+      handleVisitor();
+      hasSentRequest.current = true;
+    }
+  }, []);
 
   const [data, setData] = useState(null);
   const [link, setLink] = useState(null);
