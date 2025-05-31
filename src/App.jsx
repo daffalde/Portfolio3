@@ -8,6 +8,7 @@ import Skill from "./pages/Skill";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import DashboardMessage from "./pages/DashboardMessage";
+import DashboardHome from "./pages/DashboardHome";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/skill" Component={Skill} />
           <Route path="/projects" Component={Portfolio} />
           <Route path="/contact" Component={Contact} />
+          <Route path="/dashboard" Component={DashboardHome} />
           <Route path="/dashboard/portfolio" Component={DashboardPortfolio} />
           <Route path="/dashboard/message" Component={DashboardMessage} />
           <Route path="/login" Component={Auth} />

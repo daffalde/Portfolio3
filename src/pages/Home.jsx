@@ -102,6 +102,7 @@ export default function Home() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <>
       <LoadingEnter value={loadingEnter} />
@@ -139,7 +140,12 @@ export default function Home() {
                 src="/logo-black-full.svg"
                 alt="logo"
               />
-              <button className="button-main">Hire me</button>
+              <button
+                onClick={() => window.open(link ? link.linkedin : null)}
+                className="button-main"
+              >
+                Hire me
+              </button>
             </div>
             <div className="home-footer">
               <div
@@ -208,7 +214,12 @@ export default function Home() {
                   <p>{data ? data.email : null}</p>
                   <br />
                   <br />
-                  <button className="menu-c-l-i-hire">Hire Me</button>
+                  <button
+                    onClick={() => window.open(link ? link.linkedin : null)}
+                    className="menu-c-l-i-hire"
+                  >
+                    Hire Me
+                  </button>
                 </div>
               </span>
               <span

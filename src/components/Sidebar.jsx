@@ -113,6 +113,7 @@ export function Sidebar() {
       return () => clearTimeout(timeout);
     }
   }, [alertFailed, alertSuccess]);
+
   return (
     <>
       {alertSuccess ? <AlertSuccess message={"Data ditambahkan"} /> : null}
@@ -207,7 +208,7 @@ export function Sidebar() {
             <button
               onClick={() => nav("/dashboard")}
               className={`dashboard-sidebar-button ${
-                getUrl.split("/")[2] === "" ? "dashboard-sidebar-button-on" : ""
+                getUrl.split("/")[2] ? "" : "dashboard-sidebar-button-on"
               }`}
             >
               <img src="/home.png" alt="out icon" />
