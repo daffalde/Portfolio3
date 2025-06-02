@@ -21,48 +21,24 @@ export default function DashboardHome() {
     const token = Cookies.get("token");
     try {
       const visitor = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/visitor?select=*",
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-          },
-        }
+        "https://portfolio3-backend.vercel.app/data/visitor"
       );
       const message = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/message?select=*",
+        "https://portfolio3-backend.vercel.app/data/pesan",
         {
           headers: {
-            apikey: import.meta.env.VITE_ANON,
             Authorization: `Bearer ${token}`,
           },
         }
       );
       const portfolio = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/portfolio?select=*",
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        "https://portfolio3-backend.vercel.app/data/portfolio"
       );
       const user = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/user?select=*",
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        "https://portfolio3-backend.vercel.app/data/info"
       );
       const social = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/sosial?select=*",
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        "https://portfolio3-backend.vercel.app/data/sosial"
       );
       setMessage(message.data);
       setPortfolio(portfolio.data);
@@ -96,7 +72,7 @@ export default function DashboardHome() {
     const token = Cookies.get("token");
     try {
       await axios.patch(
-        `https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/user?id_user=eq.6`,
+        `https://portfolio3-backend.vercel.app/data/info/1`,
         {
           nama: inputNama.current.value ? inputNama.current.value : user.nama,
           email: inputEmail.current.value
@@ -117,7 +93,6 @@ export default function DashboardHome() {
         },
         {
           headers: {
-            apikey: import.meta.env.VITE_ANON,
             Authorization: `Bearer ${token}`,
           },
         }
@@ -140,7 +115,7 @@ export default function DashboardHome() {
     const token = Cookies.get("token");
     try {
       await axios.patch(
-        `https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/sosial?id_user=eq.1`,
+        `https://portfolio3-backend.vercel.app/data/sosial/1`,
         {
           github: inputGit.current.value
             ? inputGit.current.value
@@ -160,7 +135,6 @@ export default function DashboardHome() {
         },
         {
           headers: {
-            apikey: import.meta.env.VITE_ANON,
             Authorization: `Bearer ${token}`,
           },
         }
@@ -216,7 +190,7 @@ export default function DashboardHome() {
                     </option>
                     {[
                       ...new Set(
-                        visitor.map((e) => e.created_at.split("-")[0])
+                        visitor.map((e) => e.visitor_tanggal.split("-")[0])
                       ),
                     ].map((year) => (
                       <option key={year} value={year}>
@@ -250,63 +224,63 @@ export default function DashboardHome() {
                       data: [
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "01" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "01" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "02" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "02" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "03" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "03" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "04" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "04" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "05" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "05" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "06" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "06" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "07" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "07" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "08" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "08" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "09" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "09" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "10" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "10" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "11" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "11" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                         visitor.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "12" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.visitor_tanggal.split("-")[1] === "12" &&
+                            e.visitor_tanggal.split("-")[0] === yearSelect
                         ).length,
                       ],
                       color: "#000000",
@@ -327,7 +301,7 @@ export default function DashboardHome() {
                     </option>
                     {[
                       ...new Set(
-                        message.map((e) => e.created_at.split("-")[0])
+                        message.map((e) => e.pesan_tanggal.split("-")[0])
                       ),
                     ].map((year) => (
                       <option key={year} value={year}>
@@ -361,63 +335,63 @@ export default function DashboardHome() {
                       data: [
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "01" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "01" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "02" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "02" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "03" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "03" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "04" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "04" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "05" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "05" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "06" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "06" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "07" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "07" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "08" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "08" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "09" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "09" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "10" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "10" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "11" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "11" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                         message.filter(
                           (e) =>
-                            e.created_at.split("-")[1] === "12" &&
-                            e.created_at.split("-")[0] === yearSelect
+                            e.pesan_tanggal.split("-")[1] === "12" &&
+                            e.pesan_tanggal.split("-")[0] === yearSelect
                         ).length,
                       ],
                       color: "#000000",
@@ -436,14 +410,14 @@ export default function DashboardHome() {
                   ref={inputNama}
                   type="text"
                   id="dashboard-h-c-d-nama"
-                  placeholder={user[0].nama}
+                  placeholder={user[0].info_nama}
                 />
                 <label htmlFor="dashboard-h-c-d-email">Email</label>
                 <input
                   ref={inputEmail}
                   type="text"
                   id="dashboard-h-c-d-email"
-                  placeholder={user[0].email}
+                  placeholder={user[0].info_email}
                 />
                 <label htmlFor="dashboard-h-c-d-spesialis">Spesialisasi</label>
                 <input

@@ -11,10 +11,7 @@ import { AlertFailed, AlertSuccess } from "../components/Alert";
 
 export default function DashboardPortfolio() {
   const nav = useNavigate();
-  const token = Cookies.get("token");
-  if (!token) {
-    nav("/");
-  }
+
   const [loadingPage, setLoadingPage] = useState(true);
   const [loadingButton, setLoadingButton] = useState(false);
 
@@ -26,13 +23,7 @@ export default function DashboardPortfolio() {
   async function getData() {
     try {
       const { data } = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/portfolio?select=*",
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        "https://portfolio3-backend.vercel.app/data/portfolio"
       );
       setData(data);
       setLoadingPage(false);
@@ -79,40 +70,14 @@ export default function DashboardPortfolio() {
   }
 
   // fungsi delete
-  async function handleDelete(id, dataGambar, dataLogo) {
+  async function handleDelete(id) {
     setLoadingPage(true);
+    const token = Cookies.get("token");
     try {
-      // delete gambar
       await axios.delete(
-        `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/storage/gambar/${
-          dataGambar.split("/")[9]
-        }`,
+        `https://portfolio3-backend.vercel.app/data/portfolio/${id}`,
         {
           headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      // delete logo
-      await axios.delete(
-        `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/storage/logo/${
-          dataLogo.split("/")[9]
-        }`,
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      // hapus data
-      await axios.delete(
-        `https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/portfolio?id_portfolio=eq.${id}`,
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
             Authorization: `Bearer ${token}`,
           },
         }
@@ -125,80 +90,25 @@ export default function DashboardPortfolio() {
   }
 
   // fungsi edit
-  async function handleEdit(id, dataGambar, dataLogo) {
+  async function handleEdit(id) {
     setLoadingButton(true);
-    const date = Date.now();
-    setLoadingButton(true);
+    const token = Cookies.get("token");
     const formData = new FormData();
-    formData.append("file", file);
-    const formLogo = new FormData();
-    formLogo.append("file", logo);
+    formData.append("gambar", file);
+    formData.append("logo", logo);
+    formData.append("nama", inputNama.current.value);
+    formData.append("link", inputLink.current.value);
+    formData.append("deskripsi", inputDesc.current.value);
+    formData.append("tanggal", new Date());
     try {
-      // delete gambar
-      await axios.delete(
-        `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/storage/gambar/${
-          dataGambar.split("/")[9]
-        }`,
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      // delete logo
-      await axios.delete(
-        `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/storage/logo/${
-          dataLogo.split("/")[9]
-        }`,
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      // input gambar
-      await axios.post(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/storage/gambar/" +
-          date,
+      // edit data
+      await axios.patch(
+        `https://portfolio3-backend.vercel.app/data/portfolio/${id}`,
         formData,
         {
           headers: {
-            apikey: import.meta.env.VITE_ANON,
+            "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      // input logo
-      await axios.post(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/storage/logo/" +
-          date,
-        formLogo,
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      // edit data
-      await axios.patch(
-        `https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/portfolio?id_portfolio=eq.${id}`,
-        {
-          nama: inputNama.current.value,
-          logo: `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/public/storage/logo/${date}`,
-          gambar: `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/public/storage/gambar/${date}`,
-          deskripsi: inputDesc.current.value,
-          link: inputLink.current.value,
-        },
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-            Prefer: "return=minimal",
           },
         }
       );
@@ -253,7 +163,7 @@ export default function DashboardPortfolio() {
                     src={e.logo}
                     alt="gambar logo"
                   />
-                  <p>{e.nama}</p>
+                  <p>{e.portfolio_nama}</p>
                   <Link to={e.link}>{e.link}</Link>
                   <button
                     onClick={(event) => {
@@ -311,7 +221,11 @@ export default function DashboardPortfolio() {
                           <input
                             ref={inputNama}
                             type="text"
-                            placeholder={e.nama ? e.nama : "Nama website"}
+                            placeholder={
+                              e.portfolio_nama
+                                ? e.portfolio_nama
+                                : "Nama website"
+                            }
                           />
                         </span>
                         <span>
@@ -337,9 +251,7 @@ export default function DashboardPortfolio() {
                       </div>
                       <div className="d-p-i-action">
                         <button
-                          onClick={() =>
-                            handleEdit(e.id_portfolio, e.gambar, e.logo)
-                          }
+                          onClick={() => handleEdit(e.id_portfolio)}
                           className="button-main"
                         >
                           Edit{" "}

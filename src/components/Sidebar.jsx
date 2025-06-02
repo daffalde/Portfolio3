@@ -47,48 +47,20 @@ export function Sidebar() {
   async function handleAdd() {
     setLoadingButton(true);
     const formData = new FormData();
-    formData.append("file", file);
-    const formLogo = new FormData();
-    formLogo.append("file", logo);
+    formData.append("gambar", file);
+    formData.append("logo", logo);
+    formData.append("nama", inputNama.current.value);
+    formData.append("link", inputLink.current.value);
+    formData.append("deskripsi", inputDesc.current.value);
+    formData.append("tanggal", new Date());
 
-    const date = Date.now();
     try {
-      const respFile = await axios.post(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/storage/gambar/" +
-          date,
+      await axios.post(
+        "https://portfolio3-backend.vercel.app/data/portfolio",
         formData,
         {
           headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const respLogo = await axios.post(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/storage/logo/" +
-          date,
-        formLogo,
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      // input semua data
-      await axios.post(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/portfolio",
-        {
-          nama: inputNama.current.value,
-          logo: `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/public/storage/logo/${date}`,
-          gambar: `https://heqfgtfpnhrtzgkwxsrj.supabase.co/storage/v1/object/public/storage/gambar/${date}`,
-          deskripsi: inputDesc.current.value,
-          link: inputLink.current.value,
-        },
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
+            "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
           },
         }

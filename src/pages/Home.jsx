@@ -3,6 +3,7 @@ import "../style/home.css";
 import { useEffect, useRef, useState } from "react";
 import { LoadingEnter } from "../components/Loading";
 import axios from "axios";
+import moment from "moment";
 
 export default function Home() {
   const getUrl = window.location.search;
@@ -12,17 +13,10 @@ export default function Home() {
 
   async function handleVisitor() {
     try {
-      await axios.post(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/visitor",
-        {
-          platform: navigator.userAgent,
-        },
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-          },
-        }
-      );
+      await axios.post("https://portfolio3-backend.vercel.app/data/visitor", {
+        platform: navigator.userAgent,
+        tanggal: new Date(),
+      });
     } catch (e) {
       console.log(e);
     }
@@ -44,15 +38,10 @@ export default function Home() {
   async function getData() {
     try {
       const resp = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/user?select=*",
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-          },
-        }
+        "https://portfolio3-backend.vercel.app/data/info"
       );
       const respLink = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/sosial?select=*",
+        "https://portfolio3-backend.vercel.app/data/sosial",
         {
           headers: {
             apikey: import.meta.env.VITE_ANON,
@@ -211,7 +200,7 @@ export default function Home() {
                   <br />
                   <br />
                   <p>FrontEnd Developer</p>
-                  <p>{data ? data.email : null}</p>
+                  <p>{data ? data.info_email : null}</p>
                   <br />
                   <br />
                   <button

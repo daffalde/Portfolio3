@@ -32,11 +32,11 @@ export default function Skill() {
             <div className="skill-list">
               <div className="div1">
                 <img src="/html.png" alt="skill icon" />
-                <h5>Html</h5>
+                <h5>Html & CSS</h5>
               </div>
-              <div className="div2">
-                <img src="/css.png" alt="skill icon" />
-                <h5>Css</h5>
+              <div className="div5">
+                <img src="/pg.png" alt="skill icon" />
+                <h5>PostgreSQL</h5>
               </div>
               <div className="div3">
                 <img src="/react.png" alt="skill icon" />
@@ -46,13 +46,13 @@ export default function Skill() {
                 <img src="/figma.png" alt="skill icon" />
                 <h5>Figma</h5>
               </div>
-              <div className="div5">
+              <div className="div2">
                 <img src="/js.png" alt="skill icon" />
                 <h5>Javascipt</h5>
               </div>
               <div className="div6">
-                <img src="/supabase.png" alt="skill icon" />
-                <h5>Supabase</h5>
+                <img src="/exp.svg" alt="skill icon" />
+                <h5>Express js</h5>
               </div>
             </div>
           </div>

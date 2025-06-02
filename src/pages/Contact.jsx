@@ -12,20 +12,10 @@ export default function Contact() {
   async function getData() {
     try {
       const resp = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/user?select=*",
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-          },
-        }
+        "https://portfolio3-backend.vercel.app/data/info"
       );
       const respLink = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/sosial?select=*",
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-          },
-        }
+        "https://portfolio3-backend.vercel.app/data/sosial"
       );
       setData(resp.data[0]);
       setLink(respLink.data[0]);
@@ -49,19 +39,12 @@ export default function Contact() {
   async function handleSend(e) {
     e.preventDefault();
     try {
-      await axios.post(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/message",
-        {
-          nama: inputName.current.value,
-          email: inputEmail.current.value,
-          pesan: inputMessage.current.value,
-        },
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-          },
-        }
-      );
+      await axios.post("https://portfolio3-backend.vercel.app/data/pesan", {
+        nama: inputName.current.value,
+        email: inputEmail.current.value,
+        pesan: inputMessage.current.value,
+        tanggal: new Date(),
+      });
       setAlertSuccess(true);
       inputName.current.value = "";
       inputEmail.current.value = "";
@@ -118,10 +101,10 @@ export default function Contact() {
                 <div className="contact-m-info">
                   <span>
                     <h6>General</h6>
-                    <p>{data ? data.nama : null}</p>
+                    <p>{data ? data.info_nama : null}</p>
                     <br />
                     <h6>Email</h6>
-                    <p>{data ? data.email : null}</p>
+                    <p>{data ? data.info_email : null}</p>
                   </span>
                   <span>
                     <h6>Social media</h6>

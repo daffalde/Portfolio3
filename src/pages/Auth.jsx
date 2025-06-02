@@ -20,21 +20,16 @@ export default function Auth() {
     setLoadingButton(true);
     try {
       const { data } = await axios.post(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/auth/v1/token?grant_type=password",
+        "https://portfolio3-backend.vercel.app/auth/login",
         {
           email: inputEmail.current.value,
           password: inputPass.current.value,
-        },
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-          },
         }
       );
-      Cookies.set("token", data.access_token);
+      Cookies.set("token", data.token);
       nav("/dashboard");
     } catch (e) {
-      console.log(e);
+      console.log(e.response.data.message);
       setLoadingButton(false);
       setAlertFailed(true);
     }

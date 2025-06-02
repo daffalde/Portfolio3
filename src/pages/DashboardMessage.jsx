@@ -16,10 +16,9 @@ export default function DashboardMessage() {
     const token = Cookies.get("token");
     try {
       const resp = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/message?select=*",
+        "https://portfolio3-backend.vercel.app/data/pesan",
         {
           headers: {
-            apikey: import.meta.env.VITE_ANON,
             Authorization: `Bearer ${token}`,
           },
         }
@@ -51,10 +50,9 @@ export default function DashboardMessage() {
     const token = Cookies.get("token");
     try {
       await axios.delete(
-        `https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/message?id_message=eq.${e}`,
+        `https://portfolio3-backend.vercel.app/data/pesan/${e}`,
         {
           headers: {
-            apikey: import.meta.env.VITE_ANON,
             Authorization: `Bearer ${token}`,
           },
         }
@@ -125,20 +123,20 @@ export default function DashboardMessage() {
                 .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
                 .map((e) => (
                   <div
-                    onClick={() => setGetId(e.id_message)}
-                    key={e.id_message}
+                    onClick={() => setGetId(e.id_pesan)}
+                    key={e.id_pesan}
                     className={`message-b-item ${
-                      getId === e.id_message ? "message-b-item-on" : ""
+                      getId === e.id_pesan ? "message-b-item-on" : ""
                     }`}
                   >
                     <div className="message-b-i-profil">
-                      <p>{e.nama.split("")[0].toUpperCase()}</p>
+                      <p>{e.pesan_nama.split("")[0].toUpperCase()}</p>
                     </div>
                     <div className="message-b-i-info">
-                      <h6>{e.nama}</h6>
-                      <p>{e.email}</p>
+                      <h6>{e.pesan_nama}</h6>
+                      <p>{e.pesan_email}</p>
                       <div className="message-b-i-i-span">
-                        <p>{e.pesan}</p>
+                        <p>{e.pesan_isi}</p>
                       </div>
                     </div>
                   </div>
@@ -147,24 +145,24 @@ export default function DashboardMessage() {
           )}
           {getId
             ? data
-                .filter((element) => element.id_message === getId)
+                .filter((element) => element.id_pesan === getId)
                 .map((e) => (
                   <div className="message-b-content">
                     <div className="message-b-c-head">
                       <span>
                         <p>Name:</p>
-                        <p>{e.nama}</p>
+                        <p>{e.pesan_nama}</p>
                       </span>
                       <span>
                         <p>Email:</p>
-                        <p>{e.email}</p>
+                        <p>{e.pesan_email}</p>
                       </span>
                     </div>
                     <div className="message-b-c-body">
-                      <p>{e.pesan}</p>
+                      <p>{e.pesan_isi}</p>
                     </div>
                     <div className="message-b-c-action">
-                      <p>{moment(e.created_at).format("LL")}</p>
+                      <p>{moment(e.pesan_tanggal).format("LLL")}</p>
                       <span>
                         <button
                           onClick={() => setPopup(true)}

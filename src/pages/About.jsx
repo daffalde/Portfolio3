@@ -13,32 +13,31 @@ export default function About() {
           <div className="about-body">
             <h1>about</h1>
             <h6>
-              a Frontend Developer who is passionate about creating interactive
+              a FullStack Developer who is passionate about creating interactive
               and efficient web experiences.
             </h6>
           </div>
           <div className="about-footer">
             <span>
               <p>
-                As a Frontend Developer, I am passionate about creating
-                interactive, responsive and efficient web experiences. I
-                incorporate my React expertise to build modular and dynamic UIs,
-                ensuring each element has optimal performance and an intuitive
-                user experience. With Figma, I design aesthetic and functional
-                interfaces, building prototypes that are not only visually
-                appealing but also support seamless interactions.
+                I am a Fullstack Developer who combines frontend and backend
+                expertise to create scalable and efficient digital solutions.
+                Using Figma and React, I design intuitive and dynamic user
+                interfaces, ensuring seamless interactions.
               </p>
               <br />
               <p>
-                In addition, I integrated Supabase as the backend solution to
-                efficiently manage databases, user authentication, and APIs,
-                enabling fast and secure data connectivity.
+                On the backend, I leverage Express.js and PostgreSQL to manage
+                data, user authentication, and API integration with high
+                performance and security. My approach focuses on modular
+                architecture, optimization, and reliability, allowing
+                applications to grow efficiently and sustainably.
               </p>
             </span>
             <span>
               <h1>{"</>"}</h1>
               <h5>
-                FrontEnd <br />
+                FullStack <br />
                 Developer
               </h5>
             </span>

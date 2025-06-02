@@ -12,12 +12,7 @@ export default function Portfolio() {
   async function getData() {
     try {
       const { data } = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/portfolio?select=*",
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-          },
-        }
+        "https://portfolio3-backend.vercel.app/data/portfolio"
       );
       setData(data);
       setLoadingPage(false);
@@ -96,7 +91,7 @@ export default function Portfolio() {
                               }`,
                             }}
                           >
-                            {e.nama}
+                            {e.portfolio_nama}
                           </h6>
                           <span>
                             <p>{e.deskripsi}</p>

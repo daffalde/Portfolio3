@@ -8,53 +8,34 @@ import { AlertFailed } from "./Alert";
 export function Dashhead({ title }) {
   const nav = useNavigate();
 
-  useEffect(() => {
-    if (!Cookies.get("token")) {
-      nav("/login");
-    }
-  }, []);
+  const [info, setInfo] = useState(null);
 
-  const [data, setData] = useState(false);
-  const [alertFailed, setAlertFailed] = useState(false);
-  async function getData() {
+  async function getInfo() {
     try {
-      const { data } = await axios.get(
-        "https://heqfgtfpnhrtzgkwxsrj.supabase.co/rest/v1/user?select=*",
-        {
-          headers: {
-            apikey: import.meta.env.VITE_ANON,
-            Authorization: `Bearer ${Cookies.get("token")}`,
-          },
-        }
+      const resp = await axios.get(
+        "https://portfolio3-backend.vercel.app/data/info"
       );
-      setData(data[0]);
+      setInfo(resp.data[0]);
     } catch (e) {
-      setAlertFailed(true);
+      console.log(e);
     }
   }
 
   useEffect(() => {
-    getData();
-    if (alertFailed) {
-      const timeout = setTimeout(() => {
-        Cookies.remove("token");
-        nav("/login");
-      }, 2000);
-      return () => clearTimeout(timeout);
-    }
-  }, [alertFailed]);
+    getInfo();
+  }, []);
+
   return (
     <>
-      {alertFailed ? <AlertFailed message={"Sesi login habis"} /> : null}
       <div className="dashhead">
         <h5>{title}</h5>
         <div className="dashed-user">
           <span>
-            <h6>{data ? data.nama : "Loading..."}</h6>
+            <h6>{info ? info.info_nama : "Loading..."}</h6>
             <p>Admin</p>
           </span>
           <img
-            src={data.picture ? data.picture : "/profil-pelamar.svg"}
+            src={info && info.picture ? info.picture : "/profil-pelamar.svg"}
             alt="user image"
           />
         </div>
