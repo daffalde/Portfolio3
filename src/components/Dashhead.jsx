@@ -6,8 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { AlertFailed } from "./Alert";
 
 export function Dashhead({ title }) {
+  const token = Cookies.get("token");
   const nav = useNavigate();
-
+  if (!token) {
+    nav("/login");
+  }
   const [info, setInfo] = useState(null);
 
   async function getInfo() {
