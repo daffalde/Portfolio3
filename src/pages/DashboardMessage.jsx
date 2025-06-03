@@ -171,7 +171,7 @@ export default function DashboardMessage() {
                           Delete
                         </button>
                         <button
-                          onClick={() => handleEmail(e.email)}
+                          onClick={() => handleEmail(e.pesan_email)}
                           className="button-main"
                         >
                           Reply
