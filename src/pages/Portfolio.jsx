@@ -33,6 +33,7 @@ export default function Portfolio() {
     addEventListener("resize", moveWindow);
     return () => removeEventListener("resize", moveWindow);
   });
+
   return (
     <>
       <div className="portfolio-container">
@@ -49,9 +50,7 @@ export default function Portfolio() {
             <div className="portfolio">
               {data
                 ? data
-                    .sort(
-                      (a, b) => new Date(b.created_at) - new Date(a.created_at)
-                    )
+                    .sort((a, b) => b.portfolio_tanggal - a.portfolio_tanggal)
                     .map((e, i) => (
                       <div
                         key={e.id_portfolio}

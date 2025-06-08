@@ -52,7 +52,7 @@ export function Sidebar() {
     formData.append("nama", inputNama.current.value);
     formData.append("link", inputLink.current.value);
     formData.append("deskripsi", inputDesc.current.value);
-    formData.append("tanggal", new Date());
+    formData.append("tanggal", new Date().getTime());
 
     try {
       await axios.post(
