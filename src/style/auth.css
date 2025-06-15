@@ -8,7 +8,7 @@
 }
 .auth-body {
   width: 100%;
-  height: 100vh;
+  height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@
 .auth-body-content {
   width: 500px;
   height: fit-content;
-  padding: 60px 30px;
+  padding: 60px 15px;
   border-radius: 5px;
   background: #000001;
   background: linear-gradient(
@@ -33,7 +33,8 @@
   text-align: center;
 }
 .auth-body-content form {
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
 }
 .auth-body-content form span {
   border: 1px solid var(--black3);
